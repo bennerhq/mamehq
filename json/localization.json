@@ -1,0 +1,17 @@
+{
+    "shutdown": [
+        {
+            "shutdown-headline": "SHUTDOWN",
+            "shutdown-body": "You Can Run, But You Can't Hide, for ever! Are you sure you want to quit now?"
+        },{
+            "shutdown-headline": "SHUTDOWN",
+            "shutdown-body": "You Can Run, But You Can't Hide! Are you sure you want to quit?"
+        },{
+            "shutdown-headline": "SHUTDOWN",
+            "shutdown-body": "It's fun to play retro games! Do you relly want to quit now?"
+        },{
+            "shutdown-headline": "SHUTDOWN",
+            "shutdown-body": "Come on! It's not the time to quit now, rigt?"
+        }
+    ]
+}

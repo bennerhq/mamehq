@@ -1,0 +1,306 @@
+/*** -------------------------------------------------------------------------
+ * Main CSS stuff
+ *
+ * Author: jens@bennerhq.com, 2019
+ */
+
+ /***
+ * "THE BEER-WARE LICENSE" (Revision 43):
+ * 
+ * As long as you retain this notice you can do whatever you want with this 
+ * stuff. If we meet some day, and you think this stuff is worth it, you can 
+ * buy me a beer in return.
+ * 
+ * Thanks, 
+ * Jens Kaas Benner
+ * 
+ * [https://en.wikipedia.org/wiki/Beerware]
+ */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	text-overflow: ellipsis;
+
+	font-family: courier;
+	background-color: black;
+	color: green;
+}
+
+::-webkit-scrollbar{
+	display: none;
+}
+
+/* --------------------------------------------------------------
+ * DISPLAY ELEMENTS
+ */
+
+.fullscreen {
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.popup {
+	display: none;
+	z-index: 99;
+}
+
+/* --------------------------------------------------------------
+ * CONTAINERS
+ */
+#splash-container {
+	display: block;
+	text-align: center;
+}
+
+#main-container {
+	display: none;
+}
+
+/* --------------------------------------------------------------
+ * GRID
+ */
+.grid-one {
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,1);
+}
+
+.grid-now {
+	border: 1px solid gray !important;
+	color: green;
+	background-color: black;
+}
+
+.grid-now-focus {
+	border: 1px solid white !important;
+	color: white;
+}
+
+/* --------------------------------------------------------------
+ * GRID: CARD
+ */
+.card-one {
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px;
+
+	width: 220px;
+	max-width: 220px;
+
+	height: 350px;
+	max-height: 350px;
+
+	padding: 5px;
+	white-space: normal;
+
+	border: 1px solid rgb(41,41,41);
+}
+
+.card-image {
+	height: 85%;
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.card-description {
+	text-overflow: ellipsis;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+	text-align: left;
+	white-space: nowrap;
+	width: 100%;
+	font-weight: bold;
+}
+
+.card-year {
+	text-align: left;
+	font-style: italic;
+}
+
+.card-manufacturer {
+	text-overflow: ellipsis;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+	text-align: left;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.card-special {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.card-special-item {
+	display: inline-block;
+	margin-top: 2px;
+	margin-left: 2px;
+	margin-right: 2px;
+	background-color: black;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+	border-width: 1px;
+	border-style: solid;
+	border-color: inherit;
+}
+
+/* --------------------------------------------------------------
+ * CONTROLLER
+ */
+ #controller {
+	display: inline-block;
+	width: 130px;
+	vertical-align: top;
+	text-align: center;
+	padding: 10px;
+}
+
+.controller-one {
+	width: 100%;
+	background: rgb(11,11,11);
+	border-width: 1px;
+	border: 1px solid rgba(0,0,0,1);
+	height: 40px;
+	line-height: 40px;
+	padding-top: 13px;
+	margin-bottom: 7px;
+}
+
+/* --------------------------------------------------------------
+ * CARDS
+ */
+ .cards {
+	display: inline-block;
+
+	width: 100%;
+    max-height: 100%;
+
+    overflow-x: scroll;
+}
+
+/* --------------------------------------------------------------
+ * SEARCH
+ */
+ #search-popup {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	background-color: rgba(0,0,0,0.9);
+	padding: 10px;
+	border-top: 1px solid rgb(51,51,51);
+}
+
+.search-popup-inner {
+	max-width: 680px;
+	margin: 0 auto;
+	font-size: 300%;
+}
+
+.search-letters {
+	display: block;
+	text-align: center;
+}
+
+.search-letters-item {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	border: 1px solid rgba(0,0,0,1);
+}
+
+.search-input {
+	display: block;
+	width: 100%;
+	border-bottom: 1px solid green;
+	margin-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+/* --------------------------------------------------------------
+ * SHUTDOWN
+ */
+#shutdown-fullscreen {
+	background-color: rgba(0,0,0,0.8);
+	z-index: 1;
+	font-size: 150%;
+}
+
+#shutdown-dialogue {
+	width: 510px;
+	margin: auto;
+	background-color: black;
+}
+
+#shutdown-grid {
+	text-align: center;
+}
+
+.screen-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 100vh;
+}
+
+#shutdown-headline {
+	font-size: 140%;
+	font-weight: bold;
+}
+
+#shutdown-body {
+	margin: 20px;
+	font-style: italic;
+}
+
+.shutdown-one {
+	display: inline-block;
+	font-size: 140%;
+	width: 120px;
+	margin: 10px;
+	padding: 10px;
+	background: rgb(11,11,11);
+}
+
+/* --------------------------------------------------------------
+ * PLAY
+ */
+#play-fullscreen {
+	background-color: rgba(0,0,0,0.8);
+	z-index: 2;
+ }
+
+#play-dialogue {
+	width: 500px;
+	margin: auto;
+	background-color: black;
+	border: 1px solid rgb(41,41,41);
+	padding: 10px;
+}
+
+.play-image {
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+}

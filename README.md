@@ -1,6 +1,5 @@
 # MAME HQ - Arcade frontend for MAME
 
-![alt text](https://www.mamedev.org/_include/img/logo-mame.png)
 ![alt text](https://raw.github.com/bennerhq/mamehq/master/image/screenshot-001.png)
 
 
@@ -17,3 +16,6 @@ $ mame -verifyromsets > ./roms/verifyroms.txt
 
 Enjoy,  
 /benner
+
+
+![alt text](https://www.mamedev.org/_include/img/logo-mame.png)

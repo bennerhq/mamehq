@@ -1,3 +1,5 @@
+![alt text](https://www.mamedev.org/_include/img/logo-mame.png)
+
 MAME HQ - Arcade frontend for MAME
 
 This MAME frontend is fully controlled by five keys; Up, Down, Left, Right, Fire and Select.
@@ -11,7 +13,6 @@ $ mame -listxml > ./data/listxml.xml
 $ mame -verifyromsets > ./data/verifyroms.txt  
 
 
-![alt text](https://www.mamedev.org/_include/img/logo-mame.png)
 
 Enjoy,  
 /benner

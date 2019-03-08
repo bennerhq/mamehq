@@ -13,6 +13,7 @@ $ mame -listxml > ./data/listxml.xml
 $ mame -verifyromsets > ./data/verifyroms.txt  
 
 
+![alt text](https://raw.github.com/bennerhq/mamehq/master/image/screenshot-001.png)
 
 Enjoy,  
 /benner

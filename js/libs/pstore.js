@@ -25,7 +25,7 @@ class PStore {
         if (isElectron()) {
 
             try {
-                var filename =  resources.get("storage", name);
+                var filename = resources.get("storage", {"{name}": name});
 
                 const fs = require('fs');
                 let rawdata = fs.readFileSync(filename);  
@@ -45,7 +45,7 @@ class PStore {
 
     static set(name, json) {
         if (isElectron()) {
-            var filename = resources.get("storage", name);
+            var filename = resources.get("storage", {"{name}": name});
 
             const fs = require('fs');
             let rawdata = JSON.stringify(json, null, 4);  

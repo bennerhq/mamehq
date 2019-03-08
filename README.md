@@ -1,4 +1,4 @@
-![alt text](https://www.mamedev.org/_include/img/logo-mame.png)
+![alt text](https://raw.github.com/bennerhq/mamehq/master/image/screenshot-001.png)
 
 MAME HQ - Arcade frontend for MAME
 
@@ -13,7 +13,7 @@ $ mame -listxml > ./data/listxml.xml
 $ mame -verifyromsets > ./data/verifyroms.txt  
 
 
-![alt text](https://raw.github.com/bennerhq/mamehq/master/image/screenshot-001.png)
+![alt text](https://www.mamedev.org/_include/img/logo-mame.png)
 
 Enjoy,  
 /benner

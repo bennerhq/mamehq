@@ -7,7 +7,7 @@ This MAME frontend is fully controlled by five keys; Up, Down, Left, Right, Fire
 
 MAME HQ is programmed in JS + HTML + CSS using Electron (https://electronjs.org/) for cross platform implementation!
 
-Building MAME roms set:
+# Building MAME roms set:
 
 $ cd mamehq  
 $ mame -listxml > ./roms/listxml.xml  

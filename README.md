@@ -1,3 +1,4 @@
+![alt text](https://www.mamedev.org/_include/img/logo-mame.png)
 ![alt text](https://raw.github.com/bennerhq/mamehq/master/image/screenshot-001.png)
 
 MAME HQ - Arcade frontend for MAME
@@ -6,14 +7,12 @@ This MAME frontend is fully controlled by five keys; Up, Down, Left, Right, Fire
 
 MAME HQ is programmed in JS + HTML + CSS using Electron (https://electronjs.org/) for cross platform implementation!
 
-How to build the romset for MAME HQ
+Building MAME roms set:
 
 $ cd mamehq  
 $ mame -listxml > ./roms/listxml.xml  
 $ mame -verifyromsets > ./roms/verifyroms.txt  
 
-
-![alt text](https://www.mamedev.org/_include/img/logo-mame.png)
 
 Enjoy,  
 /benner

@@ -18,6 +18,15 @@
  */
 
 "use strict";
+
+/***
+ * Source:
+ *      https://davidwalsh.name/javascript-clone-array
+ */
+Array.prototype.clone = function() {
+	return this.slice(0);
+};
+
 /***
  * Source:
  *      https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0

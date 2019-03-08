@@ -22,8 +22,6 @@
 class Cards extends Grid {
 
 	constructor(config) {
-		console.log("[Alphabet.constructor]");
-
 		super(config);
 
 		this.config.gridID = "#cards";

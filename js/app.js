@@ -23,8 +23,6 @@ class Application {
 	constructor() {
         var self = this;
 
-		console.log("[Application.constructor]");
-
 		this.controller = new Controller({
             onEdge: function(dx, dy) {
                 if (dx > 0) {
@@ -94,7 +92,7 @@ class Application {
 		});
 
         this.cards = new Cards({
-			width: window.innerWidth - 160, // FIXME!
+			width: window.innerWidth - 170, // FIXME!
 
             onEdge: function(dx, dy) {
                 if (dx < 0) {
@@ -128,9 +126,8 @@ class Application {
 			}
 		});
 
-
 		$( window ).resize(() => {
-			self.cards.config.width = window.innerWidth - 160; // FIXME!
+			self.cards.config.width = window.innerWidth - 170; // FIXME!
 			self.cards.show();
 		});
 	}

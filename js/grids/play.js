@@ -22,8 +22,6 @@
 class Play extends Alphabet {
 
 	constructor(config) {
-		console.log("[Play.constructor]");
-
         super(config);
     }
 
@@ -51,10 +49,10 @@ class Play extends Alphabet {
         $("#play-fullscreen").fadeIn(200);
         $("#play-dialogue").show();
 
-        var url = resources.get("image_marquees", {"{name}": card.name});
+        var url = resources.get("marquees", {"{name}": card.name});
         this.imageSnapper("#play-image-marquees", url);
 
-        var url = resources.get("image_snap", {"{name}": card.name});
+        var url = resources.get("snap", {"{name}": card.name});
         this.imageSnapper("#play-image-name", url, resources.get("url_image_arcade_icon"));
 
         animateCss("#play-dialogue", "bounceInDown", function() {

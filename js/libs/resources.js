@@ -22,30 +22,43 @@
 class Resources {
 
     constructor() {
-        this.cache = {};
         this.urls = [];
+        this.cache = {};
     }
 
     moreUrls(urls) {
-        if (Array.isArray(urls)) {
-            this.urls = this.urls.concat(urls);
+        if (!Array.isArray(urls)) {
+            urls = [urls];
         }
-        else if (isString(urls)) {
-            this.urls.push({url: urls});
-        }
-        else if (urls.url) {
-            this.urls.push(urls);
-        }
-        else {
-            console.warn("ERROR: urls need to contain 'url'");
-        }
+
+        var added = false;
+
+        urls.forEach((item) => {
+            if (item.url) {
+                this.urls.push(item);
+                added = true;
+            }
+            else if (isString(item)) {
+                this.urls.push({url: item});
+                added = true;
+            }
+            else {
+                console.warn("ERROR: url items need to contain '.url' or be a 'string'");
+            }
+        });
+
+        return added;
     }
 
-    moreJSON(config) {
+    moreJSON(json) {
+        if (!json) {
+            return;
+        }
+
         var replaceKey = (content) => {
-            if (isString(content)) {
-                for (var key in config) {
-                    var str = config[key];
+            for (var key in json) {
+                var str = json[key];
+                if (isString(str)) {
                     content = content.replace("{" + key + "}", str);
                 }
             }
@@ -53,31 +66,39 @@ class Resources {
             return content;
         };
 
-        for (var key in config) {
-            var content = config[key];
-            config[key] = replaceKey(content);
+        for (var key in json) {
+            var content = json[key];
+            if (isString(content)) {
+                json[key] = replaceKey(content);
+            }
         }
 
-        var urls = [];
-        for (var key in config) {
-            var url = config[key];
+        var added = false;
+
+        for (var key in json) {
+            var url = json[key];
 
             if (key.startsWith("url_")) {
-                urls.push({id: key, url: url});
+                this.urls.push({id: key, url: url});
+
+                added = true;
             }
             else {
-                this.set(key, null, url, null);
+                this.set(key, null, url);
             }
         }
 
-        this.moreUrls(urls);
+        return added;
     }
 
-    set(id, url, data, callback) {
+    set(id, url, data) {
+        if (!id) {
+            id = url;
+        }
+
         this.cache[id] = {
             url: url,
-            data: data,
-            callback: callback
+            data: data
         };
     }
 
@@ -97,6 +118,86 @@ class Resources {
         }
 
         return res;
+    }
+
+    loader(callback) {
+        var self = this;
+
+        var counter = this.urls.length;
+
+        var finalize = () => {
+            counter --;
+            if (counter) {
+                return;
+            }
+
+            var merged = {};
+            self.urls.forEach((item) => {
+                if (typeof item.data === "object") {
+                    merged = Object.assign(merged, item.data);
+                }
+            });
+
+            self.urls = [];
+
+            var added = self.moreJSON(merged);
+            if (added) {
+                self.loader(callback);
+            }
+            else {
+                callback();
+            }
+        }
+
+        var getDataByURL = (item) => {
+            if (!item.url) {
+                finalize();
+                return;
+            }
+
+            for (var key in self.cache) {
+                var str = self.cache[key].data;
+                if (isString(str)) {
+                    item.url = item.url.replace("{" + key + "}", str);
+                }
+            }
+
+            var request = new XMLHttpRequest();
+            request.open('GET', item.url, true);
+
+            request.onerror = function() {
+                console.warn("*** ERROR: Loading failed: " + item.url);
+
+                finalize();
+            };
+
+            request.onload = function() {
+                if (request.status < 200 && request.status >= 400) {
+                    console.warn("*** ERROR: Status code: " + request.status);
+                }
+                else {
+                    item.data = request.responseText;
+
+                    if (item.url.endsWith(".json")) {
+                        item.data = JSON.parse(item.data);
+                    }
+                    else if (item.url.endsWith(".svg")) {
+                        var base64 = window.btoa(item.data);
+                        item.data = "data:image/svg+xml;base64," + base64;
+                    }
+
+                    self.set(item.id, item.url, item.data);
+                }
+
+                finalize();
+            };
+
+            request.send();
+        }
+ 
+        this.urls.forEach((item) => {
+            getDataByURL(item);
+        });
     }
 
     button(config) {
@@ -134,82 +235,5 @@ class Resources {
         }
 
         return str;
-    }
-
-    loader(callback, injectJSON) {
-        var self = this;
-
-        var counter = this.urls.length;
-
-        var finalize = () => {
-            counter --;
-            if (counter) {
-                return;
-            }
-
-            var len = self.urls.length;
-            for (var i=0; i < len; i++) {
-                var item = self.urls[i];
-
-                if (item.callback) {
-                    item.callback(item.id, item.url, item.data);
-                }
-            }
-
-            self.urls = [];
-
-            var json = resources.get(injectJSON);
-            if (json) {
-                resources.moreJSON(json);
-                self.loader(callback, false);
-            }
-            else {
-                callback();
-            }
-        }
-
-        var getDataByURL = (item) => {
-            if (!item.url) {
-                finalize();
-
-                return;
-            }
-
-            var request = new XMLHttpRequest();
-            request.open('GET', item.url, true);
-
-            request.onerror = function() {
-                console.warn("*** ERROR: Loading failed: " + item.url);
-
-                finalize();
-            };
-
-            request.onload = function() {
-                if (request.status < 200 && request.status >= 400) {
-                    console.warn("*** ERROR: Status code: " + request.status);
-                }
-                else {
-                    item.data = request.responseText;
-                    if (item.url.endsWith(".json")) {
-                        item.data = JSON.parse(item.data);
-                    }
-                    else if (item.url.endsWith(".svg")) {
-                        var base64 = window.btoa(item.data);
-                        item.data = "data:image/svg+xml;base64," + base64;
-                    }
-            
-                    self.set(item.id || item.url, item.url, item.data, item.callback);
-                }
-
-                finalize();
-            };
-
-            request.send();
-        }
- 
-        for (var i=0; i < this.urls.length; i++) {
-            var item = this.urls[i];
-            getDataByURL(item);
-        }
     }
 }

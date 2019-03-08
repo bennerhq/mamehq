@@ -38,7 +38,7 @@ class Card {
 		var html = "";
 
 		const img = new Image();
-	    img.src = resources.get("image_snap", {"{name}": this.name});
+	    img.src = resources.get("snap", {"{name}": this.name});
 		let snap = img.src;
 		if (!img.complete) {
 			snap = resources.get("url_image_arcade_icon");
@@ -58,9 +58,11 @@ class Card {
 
 		html +=
 			"<div class='card-image' id='" + card_image_id + "' style='background-image:url(" + snap + ")'></div>" +
-			"<div class='card-description'>" + description + "</div>" +
-			"<div class='card-year'>" + year + "</div>" +
-			"<div class='card-manufacturer'>" + manufacturer + "</div>";
+			"<div class='card-info'>" +
+				"<div class='card-description'>" + description + "</div>" +
+				"<div class='card-year'>" + year + "</div>" +
+				"<div class='card-manufacturer'>" + manufacturer + "</div>" +
+			"</div>";
 
 		if (this.counter || this.favorit || this.bad || this.notWorking) {
 			html += "<div class='card-special'>";

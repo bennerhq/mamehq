@@ -18,13 +18,14 @@
  */
 
 class PStore {
+
     static get(name) {
         let json;
 
         if (isElectron()) {
 
             try {
-                var filename = resources.get("path_storage")  + name + '.json'; // FIXME
+                var filename =  resources.get("storage", name);
 
                 const fs = require('fs');
                 let rawdata = fs.readFileSync(filename);  
@@ -44,7 +45,7 @@ class PStore {
 
     static set(name, json) {
         if (isElectron()) {
-            var filename = resources.get("path_storage")  + name + '.json'; // FIXME
+            var filename = resources.get("storage", name);
 
             const fs = require('fs');
             let rawdata = JSON.stringify(json, null, 4);  

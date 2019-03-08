@@ -22,8 +22,6 @@
 class Shutdown extends Alphabet {
 
 	constructor(config) {
-		console.log("[Controller.constructor]");
-
         super(config);
 
         this.config.gridID = "#shutdown-grid";

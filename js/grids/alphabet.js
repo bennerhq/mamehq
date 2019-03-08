@@ -22,8 +22,6 @@
 class Alphabet extends Grid {
 
 	constructor(config) {
-		console.log("[Alphabet.constructor]");
-
 		super(config);
 
 		this.config.letters = config.letters || "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";

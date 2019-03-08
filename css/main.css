@@ -89,55 +89,46 @@ html, body {
 .card-one {
 	position: relative;
 	display: inline-block;
-	margin: 10px;
-	padding: 10px;
+	margin: 5px;
 
-	width: 220px;
-	max-width: 220px;
-
-	height: 350px;
-	max-height: 350px;
-
-	padding: 5px;
-	white-space: normal;
+	width: 240px;
+	height: 320px;
 
 	border: 1px solid rgb(41,41,41);
 }
 
 .card-image {
-	height: 85%;
+	height: 100%;
 	width: 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 
-.card-description {
-	text-overflow: ellipsis;
+.card-info {
+	background-color: rgba(1,1,1,0.8);
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	padding-left: 5px;
+	padding-right: 15px;
 
-    white-space: nowrap;
-    overflow: hidden;
-
-	text-align: left;
+	width: 220px;
 	white-space: nowrap;
-	width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.card-description {
 	font-weight: bold;
 }
 
 .card-year {
-	text-align: left;
 	font-style: italic;
 }
 
 .card-manufacturer {
-	text-overflow: ellipsis;
-
-    white-space: nowrap;
-    overflow: hidden;
-
-	text-align: left;
-	white-space: nowrap;
-	width: 100%;
 }
 
 .card-special {
@@ -191,7 +182,8 @@ html, body {
 	width: 100%;
     max-height: 100%;
 
-    overflow-x: scroll;
+	overflow-x: scroll;
+	padding: 5px;
 }
 
 /* --------------------------------------------------------------

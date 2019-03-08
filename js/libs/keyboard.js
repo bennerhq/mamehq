@@ -24,8 +24,6 @@ class Keyboard {
 	constructor(config) {
 		var self = this;
 
-		console.log("[Keyboard.constructor]");
-
 		this.config = config || {};
 
 		this.config.keyUp = resources.get("keyUp").split(" ");

@@ -19,15 +19,15 @@
 
 // ---------------------------------------------------------------------------
 
+// PATH's
+const PATH_SETTINGS_JSON        = "./config/settings.json";
+
 // Store ID's
 const STORE_PLAYED_ID           = "played";
 const STORE_FAVORITS_ID         = "favorits";
 const STORE_HISTORY_ID          = "history";
 const STORE_NOT_WORKING_ID      = "notworking";
 const STORE_ALL_GAMES           = "games";
-
-// PATH's
-const PATH_CONFIG_JSON          = "json/config.json";
 
 // Limits
 const SHUFFLE_MAX               = 100;

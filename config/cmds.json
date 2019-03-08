@@ -1,0 +1,4 @@
+{
+    "shell_cmd_play":           "cd {path_mame};mame -skip_gameinfo {name}",
+    "shell_cmd_shutdown":       "shutdown -P 0"
+}

@@ -19,15 +19,9 @@
 
 "use strict";
 
-var grids = [];
-
 class Grid {
 
 	constructor(config) {
-		var self = this;
-
-		console.log("[Grid.constructor]");
-
 		this.config = config || {};
 
 		this.config.classOne = config.classOne || "grid-one";
@@ -42,8 +36,7 @@ class Grid {
 
 		this.focus = false;
 		this.current = 0;
-
-		grids.push(this);
+		this.magic = null;
 	}
 
 	setFocus(hasFocus, current) {
@@ -61,10 +54,10 @@ class Grid {
 
 	getID(pos, clean) {
 		var id = this.config.gridID ;
-		
+
 		if (pos !== undefined) {
 			id += "-" + pos;
-	  }
+		}
 
 		if (clean === true) {
 			id = id.replace("#", "");
@@ -115,25 +108,25 @@ class Grid {
 			var len = this.length();
 			for (var i=0; i < len; i++) {
 				var id = this.getID(i, true);
-	
+
 				html += 
 					this.getPreHTML(i, true, false);
-	
+
 				html +=
 					"<div id='" + id + "' class='" + this.getClass(i) + "'>" + 
-						this.getHTML(i, true, false) + 
+					this.getHTML(i, true, false) + 
 					"</div>";
-	
+
 				html += 
 					this.getPostHTML(i);
 			}
-	
+
 			var $grid = $(this.config.gridID);
 			$grid.html(html);
 			if (this.config.width) {
 				$grid.width(this.config.width);
 			}
-	
+
 			this.setCurrent(this.current);
 		}
 
@@ -174,7 +167,7 @@ class Grid {
 		return $div;
 	}
 
-	setCurrent(current) {
+  setCurrent(current) {
 		var self = this;
 
 		if (current < 0 || current >= this.length()) {
@@ -199,9 +192,9 @@ class Grid {
 		var e = document.getElementById(id);
 		if (e) {
 			e.scrollIntoView({
-				// behavior: "smooth", // Chrome browser fuck-up!!!
-				block: "nearest",
-				inline: "nearest",
+			// behavior: "smooth", // Chrome browser fuck-up!!!
+			block: "nearest",
+			inline: "nearest",
 			});
 		}
 
@@ -222,7 +215,7 @@ class Grid {
 
 			$div.html(html);
 		}
-    }
+	}
 
 	moveX(dir) {
 		var max = this.length();

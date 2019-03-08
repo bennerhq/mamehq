@@ -22,8 +22,6 @@
 class Search extends Alphabet {
 
 	constructor(config) {
-		console.log("[Keyboard.constructor]");
-
         super(config);
 
 		this.config.ID = "#search-popup";

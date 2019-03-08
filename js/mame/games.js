@@ -24,8 +24,6 @@ class Games {
 	constructor() {
 		var self = this;
 
-		console.log("[Mamedata.constructor] constructor!")
-
 		this.all = null;
 		this.bad = null;
 		this.names = null;
@@ -57,9 +55,9 @@ class Games {
 	}
 
 	makeRomList(data) {
+		this.names = {};
 		this.all = [];
 		this.bad = [];
-		this.names = {};
 
 		var empty = {
 			counter: 0, 
@@ -96,11 +94,11 @@ class Games {
 
 			this.all.push(card);
 
-			this.users.insert(card);
-
 			if (card.bad) {
 				this.bad.push(card);
 			}
+
+			this.users.insert(card);
 		}
 
 		this.all.sort(Card.cmpSortedInc);

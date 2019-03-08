@@ -79,12 +79,11 @@
     </body>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
+        $(document).ready(function() {
             appCmd("loaded-now");
 
             resources = new Resources();
-
-            resources.moreUrls({id: "config", url: PATH_CONFIG_JSON});
+            resources.moreUrls(PATH_SETTINGS_JSON);
             resources.loader(() => {
                 loza = new Localization();
 
@@ -92,7 +91,7 @@
 
                 app = new Application();
                 app.show();
-            }, "config");
+            });
         });
-	</script>
+    </script>
 </html>

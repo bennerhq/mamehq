@@ -3,9 +3,9 @@
 ![alt text](https://raw.github.com/bennerhq/mamehq/master/image/screenshot-001.png)
 
 
-This MAME frontend is fully controlled by five keys; Up, Down, Left, Right, Fire and Select.
+MAME HQ is a frontend that is fully controlled by five keys; Up, Down, Left, Right, Fire and Select.
 
-MAME HQ is programmed in JS + HTML + CSS using Electron (https://electronjs.org/) for cross platform implementation!
+MAME HQ is programmed in JS + HTML + CSS using Electron (https://electronjs.org/) for cross platform support,
 
 # Building MAME roms set:
 

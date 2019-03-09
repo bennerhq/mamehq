@@ -1,6 +1,6 @@
 # MAME HQ - Arcade frontend for MAME
 
-![alt text](https://raw.github.com/bennerhq/mamehq/master/image/screenshot-001.png)
+![alt text](https://raw.github.com/bennerhq/mamehq/master/image/screenshot/screenshot-main.png)
 
 MAME HQ is a frontend that only need five keys to be fully controllable; UP, DOWN, LEFT; RIGHT; FIRE and SELECT.
 

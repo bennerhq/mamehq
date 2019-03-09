@@ -22,38 +22,38 @@
 class Shutdown extends Alphabet {
 
 	constructor(config) {
-        super(config);
+		super(config);
 
-        this.config.gridID = "#shutdown-grid";
-        this.config.classOne = "shutdown-one";
+		this.config.gridID = "#shutdown-grid";
+		this.config.classOne = "shutdown-one";
 
-        this.config.letters = ["ok", "no", "terminal"];
-        this.config.iconWidth = 27;
+		this.config.letters = ["ok", "no", "terminal"];
+		this.config.iconWidth = 27;
 
-        this.config.onShutdown = this.config.onShutdown || function() { return false; };
-        this.config.onCancel = this.config.onCancel || function() { return false; };
-    }
+		this.config.onShutdown = this.config.onShutdown || function() { return false; };
+		this.config.onCancel = this.config.onCancel || function() { return false; };
+	}
 
-    show() {
-        super.show();
+	show() {
+		super.show();
 
-        $("#shutdown-fullscreen")
-            .fadeIn(200);
-        $("#shutdown-dialogue").show();
+		$("#shutdown-fullscreen")
+			.fadeIn(200);
+		$("#shutdown-dialogue").show();
 
-        animateCss("#shutdown-dialogue", "bounceInDown");
+		animateCss("#shutdown-dialogue", "bounceInDown");
 
-        loza.setID("shutdown");
+		loza.setID("shutdown");
 
-        this.setCurrent(1);
-    }
+		this.setCurrent(1);
+	}
 
-    hide() {
-        super.hide();
+	hide() {
+		super.hide();
 
-        animateCss("#shutdown-dialogue", "bounceOutUp", () => {
-            $("#shutdown-dialogue").hide();
-            $("#shutdown-fullscreen").fadeOut(100);
-        });
-    }
+		animateCss("#shutdown-dialogue", "bounceOutUp", () => {
+			$("#shutdown-dialogue").hide();
+			$("#shutdown-fullscreen").fadeOut(100);
+		});
+	}
 };

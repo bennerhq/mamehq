@@ -9,32 +9,32 @@ const {app, BrowserWindow} = require('electron')
 let mainWindow
 
 function createWindow () {
-    // Create the browser window.
-    mainWindow = new BrowserWindow({
-        fullscreen: true,
-        backgroundColor: 0x0000,
-        webPreferences: {
-            nodeIntegration: true
-      }
-    })
-    mainWindow.setMenu(null)
+	// Create the browser window.
+	mainWindow = new BrowserWindow({
+		fullscreen: true,
+		backgroundColor: 0x0000,
+		webPreferences: {
+			nodeIntegration: true
+	  }
+	})
+	mainWindow.setMenu(null)
 
-    // and load the index.html of the app.
-    mainWindow.loadFile('./index.html')
+	// and load the index.html of the app.
+	mainWindow.loadFile('./index.html')
 
-    // and hide until ready!
-    mainWindow.hide()
+	// and hide until ready!
+	mainWindow.hide()
  
-    // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+	// Open the DevTools.
+	// mainWindow.webContents.openDevTools()
 
-    // Emitted when the window is closed.
-    mainWindow.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        mainWindow = null
-    })
+	// Emitted when the window is closed.
+	mainWindow.on('closed', function () {
+		// Dereference the window object, usually you would store windows
+		// in an array if your app supports multi windows, this is the time
+		// when you should delete the corresponding element.
+		mainWindow = null
+	})
 }
 
 // ---------------------------------------------------------------------------
@@ -46,15 +46,15 @@ app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-    app.quit()
+	app.quit()
 })
   
 app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (mainWindow === null) {
-        createWindow()
-    }
+	// On macOS it's common to re-create a window in the app when the
+	// dock icon is clicked and there are no other windows open.
+	if (mainWindow === null) {
+		createWindow()
+	}
 })
 
 // In this file you can include the rest of your app's specific main process
@@ -62,19 +62,19 @@ app.on('activate', function () {
 const { ipcMain } = require('electron')
 
 ipcMain.on('re-launch', (event, arg) => {
-    app.relaunch()
-    app.exit()
+	app.relaunch()
+	app.exit()
 });
 
 ipcMain.on('ready-now', (event, arg) => {
-    // ...
+	// ...
 });
 
 ipcMain.on('loaded-now', (event, arg) => {
-    mainWindow.show()
-    mainWindow.focus();
+	mainWindow.show()
+	mainWindow.focus();
 });
 
 ipcMain.on('quit-now', (event, arg) => {
-    app.quit()
+	app.quit()
 });

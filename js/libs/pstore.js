@@ -19,40 +19,40 @@
 
 class PStore {
 
-    static get(name) {
-        let json;
+	static get(name) {
+		let json;
 
-        if (isElectron()) {
+		if (isElectron()) {
 
-            try {
-                var filename = resources.get("storage", {"{name}": name});
+			try {
+				var filename = resources.get("storage", {"{name}": name});
 
-                const fs = require('fs');
-                let rawdata = fs.readFileSync(filename);  
-                json = JSON.parse(rawdata); 
-            }
-            catch (err) {
-                json = null;
-            }
+				const fs = require('fs');
+				let rawdata = fs.readFileSync(filename);  
+				json = JSON.parse(rawdata); 
+			}
+			catch (err) {
+				json = null;
+			}
 
-        }
-        else {
-            json = store.get(name);
-        }
+		}
+		else {
+			json = store.get(name);
+		}
 
-        return json;
-    }
+		return json;
+	}
 
-    static set(name, json) {
-        if (isElectron()) {
-            var filename = resources.get("storage", {"{name}": name});
+	static set(name, json) {
+		if (isElectron()) {
+			var filename = resources.get("storage", {"{name}": name});
 
-            const fs = require('fs');
-            let rawdata = JSON.stringify(json, null, 4);  
-            fs.writeFileSync(filename, rawdata);
-        }
-        else {
-            store.set(name, json);
-        }
-    }
+			const fs = require('fs');
+			let rawdata = JSON.stringify(json, null, 4);  
+			fs.writeFileSync(filename, rawdata);
+		}
+		else {
+			store.set(name, json);
+		}
+	}
 }

@@ -83,7 +83,7 @@ class Keyboard {
 			taken = this.theGrid.moveX(-1);
 		}
 
-        if (this.config.keySelect.indexOf(event.code) !== -1) {
+		if (this.config.keySelect.indexOf(event.code) !== -1) {
 			var current = this.theGrid.getCurrent();
 			taken = this.theGrid.selected(current);
 		}

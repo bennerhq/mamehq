@@ -21,15 +21,15 @@
 class Application {
 
 	constructor() {
-        var self = this;
+		var self = this;
 
 		this.controller = new Controller({
-            onEdge: function(dx, dy) {
-                if (dx > 0) {
+			onEdge: function(dx, dy) {
+				if (dx > 0) {
 					self.keyboard.setFocusTo(self.cards);
 
-                    return true;
-                }
+					return true;
+				}
 			},
 
 			onShutdown: function() {
@@ -91,32 +91,32 @@ class Application {
 			}
 		});
 
-        this.cards = new Cards({
+		this.cards = new Cards({
 			width: window.innerWidth - 170, // FIXME!
 
-            onEdge: function(dx, dy) {
-                if (dx < 0) {
+			onEdge: function(dx, dy) {
+				if (dx < 0) {
 					self.keyboard.setFocusTo(self.controller);
 
-                    return true;
-                }
+					return true;
+				}
 			},
 			
 			onSelected: () => {
 				var card = self.cards.getCard();
 				self.play.show(card);
 			}
-        });
+		});
 
-        this.search = new Search({
+		this.search = new Search({
 			onEdge: function(dx, dy) {
 				if (dy < 0 && self.cards.length()) {
 					self.keyboard.setFocusTo(self.cards);
 					this.hide();
 
-                    return true;
-                }
-            },
+					return true;
+				}
+			},
 
 			onSelected: function(input) {
 				input = input.trim();

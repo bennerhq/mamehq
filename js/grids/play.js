@@ -22,54 +22,54 @@
 class Play extends Alphabet {
 
 	constructor(config) {
-        super(config);
-    }
+		super(config);
+	}
 
-    imageSnapper(id, url, def) {
-        const img = new Image();
-	    img.src = url;
-        var snap = img.src;
-        if (!img.complete) {
-            snap = def;
-            if (!def) {
-                $(id).hide();
-            }
+	imageSnapper(id, url, def) {
+		const img = new Image();
+		img.src = url;
+		var snap = img.src;
+		if (!img.complete) {
+			snap = def;
+			if (!def) {
+				$(id).hide();
+			}
 
 			img.onload = function() {
 				$(id).show().attr("src", this.src);
 			};
 		}
 
-        $(id).attr("src", snap);
-    }
+		$(id).attr("src", snap);
+	}
 
-    show(card) {
-        var self = this;
+	show(card) {
+		var self = this;
 
-        $("#play-fullscreen").fadeIn(200);
-        $("#play-dialogue").show();
+		$("#play-fullscreen").fadeIn(200);
+		$("#play-dialogue").show();
 
-        var url = resources.get("marquees", {"{name}": card.name});
-        this.imageSnapper("#play-image-marquees", url);
+		var url = resources.get("marquees", {"{name}": card.name});
+		this.imageSnapper("#play-image-marquees", url);
 
-        var url = resources.get("snap", {"{name}": card.name});
-        this.imageSnapper("#play-image-name", url, resources.get("url_image_arcade_icon"));
+		var url = resources.get("snap", {"{name}": card.name});
+		this.imageSnapper("#play-image-name", url, resources.get("url_image_arcade_icon"));
 
-        animateCss("#play-dialogue", "bounceInDown", function() {
-            self.config.onReady.call(self, card);
-        });
-    }
+		animateCss("#play-dialogue", "bounceInDown", function() {
+			self.config.onReady.call(self, card);
+		});
+	}
 
-    hide() {
-        if ($("#play-fullscreen").is(":hidden")) {
-            return;
-        }
+	hide() {
+		if ($("#play-fullscreen").is(":hidden")) {
+			return;
+		}
 
-        super.hide();
+		super.hide();
 
-        animateCss("#play-dialogue", "bounceOutUp", () => {
-            $("#play-fullscreen").fadeOut(100);
-            $("#play-dialogue").hide();
-        });
-    }
+		animateCss("#play-dialogue", "bounceOutUp", () => {
+			$("#play-fullscreen").fadeOut(100);
+			$("#play-dialogue").hide();
+		});
+	}
 };

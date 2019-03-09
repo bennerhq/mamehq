@@ -22,37 +22,37 @@
 class Localization {
 
 	constructor(url) {
-        this.texts = resources.get("url_localization");
-    }
-    
-    get(id) {
-        return this.texts[id];
-    }
+		this.texts = resources.get("url_localization");
+	}
+	
+	get(id) {
+		return this.texts[id];
+	}
 
-    setObj(obj) {
-        for (var id in obj) {
-            var text = obj[id];
-            if (text) {
-                $("#" + id).html(text);
-            }
-        }
-    }
+	setObj(obj) {
+		for (var id in obj) {
+			var text = obj[id];
+			if (text) {
+				$("#" + id).html(text);
+			}
+		}
+	}
 
-    setID(id) {
-        var obj = this.get(id);
-        if (!obj) {
-            return;
-        }
+	setID(id) {
+		var obj = this.get(id);
+		if (!obj) {
+			return;
+		}
 
-        if (isString(obj)) {
-            $("#" + id).html(obj);
-        }
-        else if (Array.isArray(obj)) {
-            var idx = Math.floor(Math.random() * obj.length);
-            this.setObj(obj[idx]);
-        }
-        else {
-            this.setObj(obj);
-        }
-    }
+		if (isString(obj)) {
+			$("#" + id).html(obj);
+		}
+		else if (Array.isArray(obj)) {
+			var idx = Math.floor(Math.random() * obj.length);
+			this.setObj(obj[idx]);
+		}
+		else {
+			this.setObj(obj);
+		}
+	}
 };

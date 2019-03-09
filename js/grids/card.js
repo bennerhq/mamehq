@@ -38,7 +38,7 @@ class Card {
 		var html = "";
 
 		const img = new Image();
-	    img.src = resources.get("snap", {"{name}": this.name});
+		img.src = resources.get("snap", {"{name}": this.name});
 		let snap = img.src;
 		if (!img.complete) {
 			snap = resources.get("url_image_arcade_icon");

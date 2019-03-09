@@ -22,7 +22,7 @@
 class Search extends Alphabet {
 
 	constructor(config) {
-        super(config);
+		super(config);
 
 		this.config.ID = "#search-popup";
 		this.config.innerClass = "search-popup-inner";

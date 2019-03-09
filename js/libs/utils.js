@@ -32,13 +32,13 @@ Array.prototype.clone = function() {
  *      https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
  */
 String.prototype.hashCode = function(){
-    let h = 0;
+	let h = 0;
 
-    let len = this.length;
-    for(let i = 0; i < len; i++) 
-            h = Math.imul(31, h) + this.charCodeAt(i) | 0;
+	let len = this.length;
+	for(let i = 0; i < len; i++) 
+			h = Math.imul(31, h) + this.charCodeAt(i) | 0;
 
-    return h;
+	return h;
 }
 
 /***
@@ -54,17 +54,17 @@ function isString(type) {
  *      https://github.com/daneden/animate.css
  */
 function animateCss(element, animationName, callback) {
-    const node = document.querySelector(element)
-    node.classList.add('animated', animationName)
+	const node = document.querySelector(element)
+	node.classList.add('animated', animationName)
 
-    function handleAnimationEnd() {
-        node.classList.remove('animated', animationName)
-        node.removeEventListener('animationend', handleAnimationEnd)
+	function handleAnimationEnd() {
+		node.classList.remove('animated', animationName)
+		node.removeEventListener('animationend', handleAnimationEnd)
 
-        if (typeof callback === 'function') callback()
-    }
+		if (typeof callback === 'function') callback()
+	}
 
-    node.addEventListener('animationend', handleAnimationEnd)
+	node.addEventListener('animationend', handleAnimationEnd)
 }
 
 /***
@@ -72,8 +72,8 @@ function animateCss(element, animationName, callback) {
  *      https://github.com/electron/electron/issues/2288
  */
 function isElectron() {
-    var userAgent = navigator.userAgent.toLowerCase();
-    return (userAgent.indexOf(' electron/') > -1);
+	var userAgent = navigator.userAgent.toLowerCase();
+	return (userAgent.indexOf(' electron/') > -1);
 }
 
 /***
@@ -81,27 +81,27 @@ function isElectron() {
  *      https://stackoverflow.com/questions/35079548/how-to-call-shell-script-or-python-script-in-from-a-atom-electron-app
  */
 function executeShellCommand(command, callback) {
-    callback = callback || function() {};
+	callback = callback || function() {};
 
-    if (isElectron() && command !== "") {
-        const exec = require('child_process').exec;
-        exec(command, callback);
-    }
-    else {
-        console.log("[executeShellCommand] ", command)
+	if (isElectron() && command !== "") {
+		const exec = require('child_process').exec;
+		exec(command, callback);
+	}
+	else {
+		console.log("[executeShellCommand] ", command)
 
-        callback(null, null, null); 
-    }
+		callback(null, null, null); 
+	}
 }
 
 function appCmd(cmd) {
-    if (isElectron()) {
-        const { ipcRenderer } = require('electron')
-        ipcRenderer.send(cmd)
-    }
-    else {
-        console.log("[appCommand] " + cmd);
-    }
+	if (isElectron()) {
+		const { ipcRenderer } = require('electron')
+		ipcRenderer.send(cmd)
+	}
+	else {
+		console.log("[appCommand] " + cmd);
+	}
 }
 
 /***
@@ -110,25 +110,25 @@ function appCmd(cmd) {
  *      https://stackoverflow.com/questions/36098913/convert-seconds-to-days-hours-minutes-and-seconds
  */
 function elapsedString(msec) {
-    var seconds = msec / 1000;
+	var seconds = msec / 1000;
 
-    var days = Math.floor(seconds / (3600*24));
-    if (days) {
-        return days + "d";
-    }
+	var days = Math.floor(seconds / (3600*24));
+	if (days) {
+		return days + "d";
+	}
 
-    seconds  -= days*3600*24;
-    var hrs   = Math.floor(seconds / 3600);
-    if (hrs) {
-        return hrs + "h";
-    }
+	seconds  -= days*3600*24;
+	var hrs   = Math.floor(seconds / 3600);
+	if (hrs) {
+		return hrs + "h";
+	}
 
-    seconds  -= hrs*3600;
-    var mnts = Math.floor(seconds / 60);
-    if (mnts) {
-        return mnts + "m";
-    }
+	seconds  -= hrs*3600;
+	var mnts = Math.floor(seconds / 60);
+	if (mnts) {
+		return mnts + "m";
+	}
 
-    seconds  -= mnts*60;
-    return Math.round(seconds) + "s";
+	seconds  -= mnts*60;
+	return Math.round(seconds) + "s";
 }

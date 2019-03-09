@@ -29,7 +29,7 @@ class Games {
 		this.names = null;
 
 		this.db = new loki("games.db");
-        this.users = this.db.addCollection("users");
+		this.users = this.db.addCollection("users");
 
 		this.played = PStore.get(STORE_PLAYED_ID) || {};
 		this.favorits = PStore.get(STORE_FAVORITS_ID) || {};

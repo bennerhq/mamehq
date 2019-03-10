@@ -21,7 +21,9 @@
 class Application {
 
 	constructor() {
-		var self = this;
+		let self = this;
+
+		let FIXME_WIDTH = 140;
 
 		this.controller = new Controller({
 			onEdge: function(dx, dy) {
@@ -69,7 +71,7 @@ class Application {
 						break;
 
 					case "ok":
-						var cmd = resources.get("shell_cmd_shutdown");
+						let cmd = resources.get("shell_cmd_shutdown");
 						executeShellCommand(cmd, (error, stdout, stderr) => {
 							$("body").fadeOut(1000);
 						});
@@ -92,7 +94,7 @@ class Application {
 		});
 
 		this.cards = new Cards({
-			width: window.innerWidth - 170, // FIXME!
+			width: window.innerWidth - FIXME_WIDTH,
 
 			onEdge: function(dx, dy) {
 				if (dx < 0) {
@@ -127,7 +129,7 @@ class Application {
 		});
 
 		$( window ).resize(() => {
-			self.cards.config.width = window.innerWidth - 170; // FIXME!
+			self.cards.config.width = window.innerWidth - FIXME_WIDTH;
 			self.cards.show();
 		});
 	}

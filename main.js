@@ -12,10 +12,7 @@ function createWindow () {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		fullscreen: true,
-		backgroundColor: 0x0000,
-		webPreferences: {
-			nodeIntegration: true
-	  }
+		backgroundColor: "black",
 	})
 	mainWindow.setMenu(null)
 

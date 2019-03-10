@@ -172,7 +172,7 @@ class Resources {
 			};
 
 			request.onload = function() {
-				if (request.status < 200 && request.status >= 400) {
+				if (request.status < 200 || request.status >= 400) {
 					console.warn("*** ERROR: Status code: " + request.status);
 				}
 				else {

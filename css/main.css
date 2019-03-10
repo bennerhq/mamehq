@@ -156,20 +156,20 @@ html, body {
  */
  #controller {
 	display: inline-block;
-	width: 130px;
 	vertical-align: top;
 	text-align: center;
-	padding: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
 }
 
 .controller-one {
-	width: 100%;
-	background: rgb(11,11,11);
+	background: rgb(21,21,21);
 	border-width: 1px;
 	border: 1px solid rgba(0,0,0,1);
-	height: 40px;
-	line-height: 40px;
-	padding-top: 13px;
+	width: 90px;
+	height: 90px;
+	line-height: 110px;
+	vertical-align: middle;
 	margin-bottom: 7px;
 }
 
@@ -183,7 +183,7 @@ html, body {
 	max-height: 100%;
 
 	overflow-x: scroll;
-	padding: 5px;
+	padding-top: 5px;
 }
 
 /* --------------------------------------------------------------
